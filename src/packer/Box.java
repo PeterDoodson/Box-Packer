@@ -22,7 +22,7 @@ public class Box {
             contents.addProduct(product, 1);
         }
     }
-    
+
     
     
     public void addProduct(Product product, int quantity) {
@@ -53,11 +53,7 @@ public class Box {
         return contents.getWeight();
     }
     
-    public void addProduct(Product product) {
-        if (canFit(product)) {
-            contents.addProduct(product, 1);
-        }
-    }
+
     
     public boolean canFit(Product p) {
         return p.getWeight() < 40;
