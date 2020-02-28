@@ -50,7 +50,7 @@ public class Box {
     }
     
     public double getWeight() {
-        return contents.getWeight();
+        return contents.getTotalWeight();
     }
     
 
