@@ -36,7 +36,7 @@ public class Product {
      * @return the hazardous
      */
     public boolean isHazardous() {
-        return false;
+        return this.hazardous;
     }
 
     /**
