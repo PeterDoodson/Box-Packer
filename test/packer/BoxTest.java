@@ -124,9 +124,9 @@ public class BoxTest {
         Box instance = new Box(customer, depot);
         instance.addProduct(z);
         
-        assertEquals(35, instance.remainingCapacity(), 0.001);
+        assertEquals(15, instance.remainingCapacity(), 0.001);
         instance.addProduct(q);
-        assertEquals(34, instance.remainingCapacity(), 0.001);
+        assertEquals(14, instance.remainingCapacity(), 0.001);
     }
 
     /**
