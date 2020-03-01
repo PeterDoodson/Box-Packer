@@ -22,23 +22,6 @@ public class ManifestTest {
     public ManifestTest() {
     }
     
-   // Manifest testManifest = new Manifest();
-   // Product aa = new Product("Nails", 1, false, false);
-    
-    
-    
-    
-    
-   // manifest.addProduct(Product("Nails", 1, false, false), 12);
-  //  manifest.addProduct(new Product("Ladder", 15, false, false), 2);
-   // manifest.addProduct(new Product("Saw", 5, false, false), 1);
-    //    manifest.addProduct(new Product("Light Bulbs", 1, false, true), 20);
-     //   manifest.addProduct(new Product("Weedkiller", 2, true, false), 1);
-
-    
-    
-    
-    
     
     @BeforeClass
     public static void setUpClass() {
