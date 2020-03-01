@@ -89,6 +89,10 @@ public class ManifestTest {
         
         assertEquals("Hammer x 3\nNails x 1", instance.toString());
         
+        instance.removeProduct(p);
+        
+        assertEquals("Hammer x 3", instance.toString());
+        
     }
 
     /**
@@ -136,6 +140,17 @@ public class ManifestTest {
         
         instance.addProduct(p);
         assertEquals(z, instance.getHeaviestUnder(5));
+        assertEquals(q, instance.getHeaviestUnder(4));
+        
+
+        instance.removeProduct(q);
+        
+        instance.removeProduct(p);
+        assertEquals(z, instance.getHeaviestUnder(5));
+        assertEquals(q, instance.getHeaviestUnder(4));
+        
+        instance.removeProduct(q);
+
         assertEquals(q, instance.getHeaviestUnder(4));
     }
 
