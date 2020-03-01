@@ -43,13 +43,11 @@ public class Manifest {
         }
         
        
-        if (quantities.containsKey(p)) {
+        else if (quantities.containsKey(p) && quantities.get(p) == 1) {
             byWeight.remove(p);
-        }
-        
-        if (quantities.containsKey(p) && quantities.get(p) == 1){
             quantities.remove(p);
         }
+        
     }
     
     public double getTotalWeight() {
@@ -96,4 +94,14 @@ public class Manifest {
         }
         return false;
     }
+    
+    public boolean hasHazardousItems() {
+        for (Product p : quantities.keySet()) {
+            if (p.isHazardous()) {
+                return true;
+            }
+        }
+        return false;
+    }
+   
 }
