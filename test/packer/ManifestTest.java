@@ -51,13 +51,13 @@ public class ManifestTest {
         assertEquals("Nails x 1", instance.toString());
         
         instance.addProduct(q, 3);
-        assertEquals("Hammer x 3\nNails x 1", instance.toString());
+        assertEquals("Nails x 1\nHammer x 3", instance.toString());
         
        instance.addProduct(p);
-       assertEquals("Hammer x 3\nNails x 2", instance.toString());
+       assertEquals("Nails x 2\nHammer x 3", instance.toString());
        
        instance.addProduct(p, 3);
-       assertEquals("Hammer x 3\nNails x 5", instance.toString());
+       assertEquals("Nails x 5\nHammer x 3", instance.toString());
     }
 
     /**
