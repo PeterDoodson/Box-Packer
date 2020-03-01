@@ -54,15 +54,15 @@ public class PackerTest {
 
         List<Box> done = Packer.packProducts(customer, depot, manifest);
         
-        assertEquals("[Andy Bravo\n88 Camp Mine St\nRidgeway\nLowe Valley\nI998\nHammer x 1\nNails x 12", done.get(0).getLabel());
+        assertEquals("[Andy Bravo\n88 Camp Mine St\nRidgeway\nLowe Valley\nI998\nHammer x 1\nNails x 12\nHEAVY", done.get(0).getLabel());
         
         manifest.addProduct(new Product("Fragile", 1, false, true), 1);
         done = Packer.packProducts(customer, depot, manifest);
-        assertEquals("[Andy Bravo\n88 Camp Mine St\nRidgeway\nLowe Valley\nI998\nHammer x 1\nNails x 12\nFragile x 1\nFRAGILE", done.get(0).getLabel());
+        assertEquals("[Andy Bravo\n88 Camp Mine St\nRidgeway\nLowe Valley\nI998\nHammer x 1\nNails x 12\nFragile x 1\nFRAGILE\nHEAVY", done.get(0).getLabel());
         
         manifest.addProduct(new Product("Hazardous", 1, true, false), 1);
         done = Packer.packProducts(customer, depot, manifest);
-        assertEquals("[Andy Bravo\n88 Camp Mine St\nRidgeway\nLowe Valley\nI998\nHammer x 1\nNails x 12\nFragile x 1\nHazardous x 1\nFRAGILE\nHAZARDOUS", done.get(0).getLabel());
+        assertEquals("[Andy Bravo\n88 Camp Mine St\nRidgeway\nLowe Valley\nI998\nHammer x 1\nNails x 12\nFragile x 1\nHazardous x 1\nFRAGILE\nHAZARDOUS\nHEAVY", done.get(0).getLabel());
         
         manifest.addProduct(new Product("Heavy", 37, false, false), 1);
         done = Packer.packProducts(customer, depot, manifest);
@@ -70,7 +70,7 @@ public class PackerTest {
         result.append(done.get(0));
         result.append(done.get(1));
         
-        assertEquals("[Andy Bravo\n88 Camp Mine St\nRidgeway\nLowe Valley\nI998\nHeavy x 1\nHammer x 1\n\n[Andy Bravo\n88 Camp Mine St\nRidgeway\nLowe Valley\nI998\nNails x 12\nFragile x 1\nHazardous x 1\nFRAGILE\nHAZARDOUS", result.toString());
+        assertEquals("[Andy Bravo\n88 Camp Mine St\nRidgeway\nLowe Valley\nI998\nHeavy x 1\nHammer x 1\nHEAVY\n\n[Andy Bravo\n88 Camp Mine St\nRidgeway\nLowe Valley\nI998\nNails x 12\nFragile x 1\nHazardous x 1\nFRAGILE\nHAZARDOUS\nHEAVY", result.toString());
         
     }
     
