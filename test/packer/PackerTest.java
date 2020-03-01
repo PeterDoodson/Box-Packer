@@ -54,23 +54,34 @@ public class PackerTest {
 
         List<Box> done = Packer.packProducts(customer, depot, manifest);
         
-        assertEquals("[Andy Bravo\n88 Camp Mine St\nRidgeway\nLowe Valley\nI998\nHammer x 1\nNails x 12\nHEAVY", done.get(0).getLabel());
+        assertEquals("Andy Bravo\n88 Camp Mine St\nRidgeway\nLowe Valley\nI998\nNails x 12\nHammer x 1\n", done.get(0).getLabel());
         
+        manifest.addProduct(new Product("Nails", 1, false, false), 12);
+        manifest.addProduct(new Product("Hammer", 3, false, false), 1);    
         manifest.addProduct(new Product("Fragile", 1, false, true), 1);
         done = Packer.packProducts(customer, depot, manifest);
-        assertEquals("[Andy Bravo\n88 Camp Mine St\nRidgeway\nLowe Valley\nI998\nHammer x 1\nNails x 12\nFragile x 1\nFRAGILE\nHEAVY", done.get(0).getLabel());
+        assertEquals("Andy Bravo\n88 Camp Mine St\nRidgeway\nLowe Valley\nI998\nNails x 12\nHammer x 1\nFragile x 1\nFRAGILE\nHEAVY\n", done.get(0).getLabel());
         
+        manifest.addProduct(new Product("Nails", 1, false, false), 12);
+        manifest.addProduct(new Product("Hammer", 3, false, false), 1);      
+        manifest.addProduct(new Product("Fragile", 1, false, true), 1);
         manifest.addProduct(new Product("Hazardous", 1, true, false), 1);
         done = Packer.packProducts(customer, depot, manifest);
-        assertEquals("[Andy Bravo\n88 Camp Mine St\nRidgeway\nLowe Valley\nI998\nHammer x 1\nNails x 12\nFragile x 1\nHazardous x 1\nFRAGILE\nHAZARDOUS\nHEAVY", done.get(0).getLabel());
+        assertEquals("Andy Bravo\n88 Camp Mine St\nRidgeway\nLowe Valley\nI998\nNails x 12\nFragile x 1\nHazardous x 1\nHammer x 1\nFRAGILE\nHAZARDOUS\nHEAVY\n", done.get(0).getLabel());
         
-        manifest.addProduct(new Product("Heavy", 37, false, false), 1);
+        manifest.addProduct(new Product("Nails", 1, false, false), 12);
+        manifest.addProduct(new Product("Hammer", 3, false, false), 1);      
+        manifest.addProduct(new Product("Fragile", 1, false, true), 1);
+        manifest.addProduct(new Product("Hazardous", 1, true, false), 1);
+        manifest.addProduct(new Product("Heavy", 17, false, false), 1);
         done = Packer.packProducts(customer, depot, manifest);
         StringBuilder result = new StringBuilder();
         result.append(done.get(0));
         result.append(done.get(1));
+       
         
-        assertEquals("[Andy Bravo\n88 Camp Mine St\nRidgeway\nLowe Valley\nI998\nHeavy x 1\nHammer x 1\nHEAVY\n\n[Andy Bravo\n88 Camp Mine St\nRidgeway\nLowe Valley\nI998\nNails x 12\nFragile x 1\nHazardous x 1\nFRAGILE\nHAZARDOUS\nHEAVY", result.toString());
+        
+        assertEquals("Andy Bravo\n88 Camp Mine St\nRidgeway\nLowe Valley\nI998\nHeavy x 1\nHammer x 1\nHEAVY\nAndy Bravo\n88 Camp Mine St\nRidgeway\nLowe Valley\nI998\nNails x 12\nFragile x 1\nHazardous x 1\nFRAGILE\nHAZARDOUS\n", result.toString());
         
     }
     
